@@ -8,7 +8,6 @@
     "browserslist": true,
     "angular.json": true,
     ".editorconfig": true,
-    "src\\environments": true,
     "src\\assets": true,
     "src\\favicon.ico": true,
     "src\\polyfills.ts": true,
