@@ -15,5 +15,8 @@
     "node_modules": true,
     "e2e": true
   },
-  "vsicons.presets.angular": true
+  "vsicons.presets.angular": true,
+  "prettier.printWidth": 70,
+  "prettier.useTabs": true,
+  "editor.minimap.maxColumn": 50
 }

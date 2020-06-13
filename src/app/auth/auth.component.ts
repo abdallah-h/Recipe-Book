@@ -32,7 +32,7 @@ export class AuthComponent implements OnDestroy {
     private componentFactoryResolver: ComponentFactoryResolver
   ) {}
 
-  //switch button between signup and login
+  // switch button between signup and login
   onSwitchMode() {
     this.isLoginMode = !this.isLoginMode;
   }

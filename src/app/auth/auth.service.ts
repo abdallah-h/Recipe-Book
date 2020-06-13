@@ -19,7 +19,7 @@ export interface AuthResponseData {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  //use behaviorSubject to subscribe to last user emitted
+  // use behaviorSubject to subscribe to last user emitted
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer: any;
 
@@ -33,12 +33,12 @@ export class AuthService {
     'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
     environment.firebaseAPIKey;
 
-  //send request to sign up user
+  // send request to sign up user
   signup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(this.signUpEndpoint, {
-        email: email,
-        password: password,
+        email,
+        password,
         returnSecureToken: true,
       })
       .pipe(
@@ -54,12 +54,12 @@ export class AuthService {
       );
   }
 
-  //send request to log user in
+  // send request to log user in
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(this.loginEndpoint, {
-        email: email,
-        password: password,
+        email,
+        password,
         returnSecureToken: true,
       })
       .pipe(
@@ -75,7 +75,7 @@ export class AuthService {
       );
   }
 
-  //auto log user in when page is reload or open it again
+  // auto log user in when page is reload or open it again
   autoLogin() {
     const userData: {
       email: string;
@@ -113,14 +113,14 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
 
-  //auto logout when token expires
+  // auto logout when token expires
   autoLogout(expirationDuration: number) {
     this.tokenExpirationTimer = setTimeout(() => {
       this.logout();
     }, expirationDuration);
   }
 
-  //handle response data geting from post request and handle user auth
+  // handle response data geting from post request and handle user auth
   private handleAuthentication(
     email: string,
     userId: string,
@@ -134,7 +134,7 @@ export class AuthService {
     localStorage.setItem('userData', JSON.stringify(user));
   }
 
-  //handle http post req when user try to signup or login
+  // handle http post req when user try to signup or login
   private handleError(errorRes: HttpErrorResponse) {
     let errorMessage = 'An unknown error occurred!';
     if (!errorRes.error || !errorRes.error.error) {
